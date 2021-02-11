@@ -1,6 +1,7 @@
 name: e2e
 # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
-on: [repository_dispatch, deployment, deployment_status, workflow_dispatch]
+on:
+  [push, repository_dispatch, deployment, deployment_status, workflow_dispatch]
 jobs:
   show-event:
     runs-on: ubuntu-20.04

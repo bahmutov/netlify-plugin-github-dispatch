@@ -1,5 +1,5 @@
-const { Octokit } = require('@octokit/rest')
 const debug = require('debug')('netlify-plugin-github-dispatch')
+const { dispatchWorkflow } = require('./dispatch')
 
 module.exports = {
   onSuccess: async ({ constants, utils }) => {
@@ -21,25 +21,7 @@ module.exports = {
     }
 
     try {
-      const octokit = new Octokit({
-        auth,
-      })
-      const owner = 'bahmutov'
-      const repo = 'netlify-plugin-github-dispatch'
-      const workflow_id = '.github/workflows/e2e.yml'
-      const ref = process.env.BRANCH
-      console.log('triggering GitHub with %o', {
-        owner,
-        repo,
-        workflow_id,
-        ref,
-      })
-      await octokit.actions.createWorkflowDispatch({
-        owner,
-        repo,
-        workflow_id,
-        ref,
-      })
+      await dispatchWorkflow({ auth })
     } catch (error) {
       return utils.build.failPlugin(error.message, { error })
     }
