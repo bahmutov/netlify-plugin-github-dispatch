@@ -26,7 +26,7 @@ jobs:
 
       # test the deployed site using
       # https://github.com/cypress-io/github-action
-      - name: Cypress run
+      - name: Cypress run 🏃‍♀️
         uses: cypress-io/github-action@v2
         with:
           config: baseUrl=${{ github.event.inputs.deployPrimeUrl }}

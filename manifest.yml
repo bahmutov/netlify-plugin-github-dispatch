@@ -1,3 +1,13 @@
 name: netlify-plugin-github-dispatch
-# inputs:
-# TODO move hard-coded inputs here
+inputs:
+  - name: owner
+    description: GitHub repository owner or organization name, for example "bahmutov"
+    required: true
+  - name: repo
+    description: GitHub repository name, for example "my-site"
+    required: true
+  - name: workflow
+    description: Filename of the workflow file, for example ".github/workflows/e2e.yml"
+    required: true
+  - name: branch
+    description: Repo's branch to trigger the workflow on

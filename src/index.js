@@ -3,7 +3,7 @@ const debug = require('debug')('netlify-plugin-github-dispatch')
 const { dispatchWorkflow } = require('./dispatch')
 
 module.exports = {
-  onSuccess: async ({ constants, utils }) => {
+  onSuccess: async ({ constants, utils, inputs }) => {
     const isLocal = constants.IS_LOCAL
     const siteName = process.env.SITE_NAME
     const deployPrimeUrl = process.env.DEPLOY_PRIME_URL
@@ -22,16 +22,18 @@ module.exports = {
     }
 
     try {
-      // TODO read from inputs or environment variables
-      const owner = 'bahmutov'
-      const repo = 'netlify-plugin-github-dispatch'
-      const workflow_id = '.github/workflows/e2e.yml'
-      const ref = process.env.BRANCH || 'main'
-      const inputs = {
+      const owner = inputs.owner
+      const repo = inputs.repo
+      const workflow_id = inputs.workflow
+      const ref = inputs.branch || process.env.BRANCH || 'main'
+      const workflowInputs = {
         siteName,
         deployPrimeUrl,
       }
-      await dispatchWorkflow({ auth, owner, repo, workflow_id, ref }, inputs)
+
+      const dispatchInput = { auth, owner, repo, workflow_id, ref }
+      debug('dispatching %o', dispatchInput)
+      await dispatchWorkflow(dispatchInput, workflowInputs)
     } catch (error) {
       return utils.build.failPlugin(error.message, { error })
     }
