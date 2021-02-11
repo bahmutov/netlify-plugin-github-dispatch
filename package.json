@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/bahmutov/netlify-plugin-github-dispatch#readme",
   "devDependencies": {
+    "cypress": "6.4.0",
     "prettier": "2.2.1"
   },
   "dependencies": {

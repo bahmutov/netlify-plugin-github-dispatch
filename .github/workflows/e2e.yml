@@ -2,6 +2,8 @@ name: e2e
 # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 on:
   workflow_dispatch:
+    # specify workflow inputs
+    # https://docs.github.com/en/actions/reference/events-that-trigger-workflows#workflow_dispatch
     inputs:
       siteName:
         description: Netlify Site Name
@@ -18,3 +20,13 @@ jobs:
         env:
           EVENT: ${{ toJson(github.event) }}
         run: echo "$EVENT"
+
+      - name: Checkout ⬇️
+        uses: actions/checkout@v2
+
+      # test the deployed site using
+      # https://github.com/cypress-io/github-action
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          config: baseUrl=${{ github.event.inputs.deployPrimeUrl }}
