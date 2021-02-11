@@ -41,7 +41,7 @@ module.exports = {
         ref,
       })
     } catch (error) {
-      return utils.build.failPlugin(err.message, { error })
+      return utils.build.failPlugin(error.message, { error })
     }
   },
 }
