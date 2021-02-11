@@ -1,3 +1,4 @@
+// @ts-check
 const debug = require('debug')('netlify-plugin-github-dispatch')
 const { dispatchWorkflow } = require('./dispatch')
 
@@ -21,7 +22,16 @@ module.exports = {
     }
 
     try {
-      await dispatchWorkflow({ auth })
+      // TODO read from inputs or environment variables
+      const owner = 'bahmutov'
+      const repo = 'netlify-plugin-github-dispatch'
+      const workflow_id = '.github/workflows/e2e.yml'
+      const ref = process.env.BRANCH || 'main'
+      const inputs = {
+        siteName,
+        deployPrimeUrl,
+      }
+      await dispatchWorkflow({ auth, owner, repo, workflow_id, ref }, inputs)
     } catch (error) {
       return utils.build.failPlugin(error.message, { error })
     }
