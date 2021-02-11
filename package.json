@@ -1,0 +1,32 @@
+{
+  "name": "netlify-plugin-github-dispatch",
+  "version": "1.0.0",
+  "description": "Playing with Netlify to trigger GitHub Actions after the deploy finishes",
+  "main": "src",
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bahmutov/netlify-plugin-github-dispatch.git"
+  },
+  "keywords": [
+    "netlify-plugin",
+    "github-actions"
+  ],
+  "author": "Gleb Bahmutov <gleb.bahmutov@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bahmutov/netlify-plugin-github-dispatch/issues"
+  },
+  "homepage": "https://github.com/bahmutov/netlify-plugin-github-dispatch#readme",
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "dependencies": {
+    "debug": "4.3.1"
+  }
+}

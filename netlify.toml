@@ -1,0 +1,8 @@
+# WARNING ⚠️: this is a Netlify file with local plugin
+# so it might look quite different from the user's Netlify configuration
+[build]
+command = "echo 'Netlify build command ...'"
+publish = "public"
+
+[[plugins]]
+  package = "."
