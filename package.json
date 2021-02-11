@@ -27,6 +27,7 @@
     "prettier": "2.2.1"
   },
   "dependencies": {
+    "@octokit/rest": "18.1.0",
     "debug": "4.3.1"
   }
 }
