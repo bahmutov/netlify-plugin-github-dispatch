@@ -1,12 +1,20 @@
 name: e2e
 # https://docs.github.com/en/actions/reference/events-that-trigger-workflows
 on:
-  [push, repository_dispatch, deployment, deployment_status, workflow_dispatch]
+  workflow_dispatch:
+    inputs:
+      siteName:
+        description: Netlify Site Name
+        required: false
+      deployPrimeUrl:
+        description: Deployed URL
+        required: true
 jobs:
   show-event:
     runs-on: ubuntu-20.04
     steps:
-      - name: Dump GitHub context
+      - run: echo "Testing url ${{ github.event.inputs.deployPrimeUrl }}"
+      - name: Dump entire event
         env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
+          EVENT: ${{ toJson(github.event) }}
+        run: echo "$EVENT"
