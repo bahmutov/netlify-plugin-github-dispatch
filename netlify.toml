@@ -6,3 +6,7 @@ publish = "public"
 
 [[plugins]]
   package = "."
+  [plugins.inputs]
+    owner = "bahmutov"
+    repo = "netlify-plugin-github-dispatch"
+    workflow = ".github/workflows/e2e.yml"
