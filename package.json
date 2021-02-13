@@ -8,6 +8,7 @@
     "manifest.yml"
   ],
   "scripts": {
+    "start": "serve public",
     "test": "cypress run",
     "semantic-release": "semantic-release"
   },
@@ -28,7 +29,8 @@
   "devDependencies": {
     "cypress": "6.4.0",
     "prettier": "2.2.1",
-    "semantic-release": "^17.3.9"
+    "semantic-release": "^17.3.9",
+    "serve": "11.3.2"
   },
   "dependencies": {
     "@octokit/rest": "18.1.0",

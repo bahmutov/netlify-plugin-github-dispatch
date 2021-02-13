@@ -9,6 +9,9 @@ jobs:
 
       - name: Run tests 🧪
         uses: cypress-io/github-action@v2
+        with:
+          start: npm start
+          config: 'baseUrl=localhost:5000'
 
       - name: Semantic Release 🚀
         uses: cycjimmy/semantic-release-action@v2
