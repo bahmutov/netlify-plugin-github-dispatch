@@ -1,17 +1,19 @@
 {
   "name": "netlify-plugin-github-dispatch",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Playing with Netlify to trigger GitHub Actions after the deploy finishes",
   "main": "src",
   "files": [
-    "src"
+    "src",
+    "manifest.yml"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "cypress run",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bahmutov/netlify-plugin-github-dispatch.git"
+    "url": "https://github.com/bahmutov/netlify-plugin-github-dispatch.git"
   },
   "keywords": [
     "netlify-plugin",
@@ -25,7 +27,8 @@
   "homepage": "https://github.com/bahmutov/netlify-plugin-github-dispatch#readme",
   "devDependencies": {
     "cypress": "6.4.0",
-    "prettier": "2.2.1"
+    "prettier": "2.2.1",
+    "semantic-release": "^17.3.9"
   },
   "dependencies": {
     "@octokit/rest": "18.1.0",
