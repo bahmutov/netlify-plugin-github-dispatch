@@ -4,12 +4,24 @@ const { dispatchWorkflow } = require('./dispatch')
 
 module.exports = {
   onSuccess: async ({ constants, utils, inputs }) => {
+    // https://docs.netlify.com/configure-builds/environment-variables/
+    const context = process.env.CONTEXT
     const isLocal = constants.IS_LOCAL
     const siteName = process.env.SITE_NAME
     const deployPrimeUrl = process.env.DEPLOY_PRIME_URL
+    const isPullRequest = process.env.PULL_REQUEST === 'true'
+    const commitRef = process.env.COMMIT_REF
+    const branch = process.env.BRANCH
+    const headBranch = process.env.HEAD
+
     debug({
       isLocal,
+      isPullRequest,
       siteName,
+      context,
+      commitRef,
+      branch,
+      headBranch,
       deployPrimeUrl,
     })
     console.log('Deployed URL %s', deployPrimeUrl)
@@ -25,7 +37,7 @@ module.exports = {
       const owner = inputs.owner
       const repo = inputs.repo
       const workflow_id = inputs.workflow
-      const ref = inputs.branch || process.env.BRANCH || 'main'
+      const ref = inputs.branch || commitRef || branch || 'main'
       const workflowInputs = {
         siteName,
         deployPrimeUrl,

@@ -67,6 +67,10 @@ This plugin is needed because [Netlify does not dispatch `deployment` or `deploy
 
 - [bahmutov/ecommerce-netlify](https://github.com/bahmutov/ecommerce-netlify)
 
+## Debugging
+
+This module uses [debug](https://github.com/visionmedia/debug#readme) to print additional logs. To enable set the environment variable `DEBUG=netlify-plugin-github-dispatch` and run the deploy.
+
 ## Small print
 
 Author: Gleb Bahmutov &lt;gleb.bahmutov@gmail.com&gt; &copy; 2021
