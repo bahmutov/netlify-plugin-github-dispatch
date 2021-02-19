@@ -35,6 +35,7 @@ const dispatchWorkflow = async (
     ref,
     inputs,
   })
+  // https://octokit.github.io/rest.js/v18#actions-create-workflow-dispatch
   await octokit.actions.createWorkflowDispatch({
     owner,
     repo,

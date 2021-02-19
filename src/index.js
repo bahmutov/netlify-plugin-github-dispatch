@@ -37,7 +37,7 @@ module.exports = {
       const owner = inputs.owner
       const repo = inputs.repo
       const workflow_id = inputs.workflow
-      const ref = inputs.branch || commitRef || branch || 'main'
+      const ref = inputs.branch || headBranch || branch || 'main'
       const workflowInputs = {
         siteName,
         deployPrimeUrl,
