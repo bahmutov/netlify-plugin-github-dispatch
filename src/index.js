@@ -8,6 +8,9 @@ module.exports = {
     const context = process.env.CONTEXT
     const isLocal = constants.IS_LOCAL
     const siteName = process.env.SITE_NAME
+    // unique deploy url
+    const deployUrl = process.env.DEPLOY_URL
+    // preview, branch, or production deploy url
     const deployPrimeUrl = process.env.DEPLOY_PRIME_URL
     const isPullRequest = process.env.PULL_REQUEST === 'true'
     const commitRef = process.env.COMMIT_REF
@@ -22,8 +25,10 @@ module.exports = {
       commitRef,
       branch,
       headBranch,
+      deployUrl,
       deployPrimeUrl,
     })
+    // we probably want to test the prime url
     console.log('Deployed URL %s', deployPrimeUrl)
 
     // if this plugin is missing something, report and error
