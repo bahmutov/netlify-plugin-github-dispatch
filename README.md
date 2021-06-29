@@ -29,6 +29,9 @@ on:
       deployPrimeUrl:
         description: Deployed URL
         required: true
+      commit:
+        description: Original repo commit SHA
+        required: false
 jobs:
   show-event:
     runs-on: ubuntu-20.04
@@ -36,9 +39,10 @@ jobs:
       - run: echo "Testing url ${{ github.event.inputs.deployPrimeUrl }}"
 ```
 
-4. In the source Netlify repo add this plugin
+4. In the source Netlify repo add this plugin to the `netlify.toml` file
 
 ```toml
+# https://github.com/bahmutov/netlify-plugin-github-dispatch
 [[plugins]]
   package = "netlify-plugin-github-dispatch"
   [plugins.inputs]

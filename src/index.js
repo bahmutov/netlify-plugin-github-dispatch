@@ -43,9 +43,11 @@ module.exports = {
       const repo = inputs.repo
       const workflow_id = inputs.workflow
       const ref = inputs.branch || headBranch || branch || 'main'
+      // inputs the triggered workflow receives
       const workflowInputs = {
         siteName,
         deployPrimeUrl,
+        commit: commitRef,
       }
 
       const dispatchInput = { auth, owner, repo, workflow_id, ref }
